@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Purlo">
+  <!-- App icon / avatar / favicon: condensed mark, white on a teal tile, legible at 16px. -->
+  <rect x="3" y="3" width="90" height="90" rx="27" fill="#0E9384"/>
+  <circle cx="31" cy="49" r="9" fill="none" stroke="#ffffff" stroke-width="7"/>
+  <line x1="48" y1="49" x2="53" y2="49" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
+  <rect x="54" y="33" width="32" height="32" rx="10" fill="#ffffff"/>
+</svg>
