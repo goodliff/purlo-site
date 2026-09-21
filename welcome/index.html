@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome to Purlo</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0E9384">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@700&display=swap">
+<style>
+  :root {
+    --ground:#F5F7F7; --surface:#FFFFFF; --surface-2:#EEF2F1; --ink:#14201F; --muted:#566462;
+    --faint:#8A9795; --border:#E1E7E5; --border-strong:#CDD6D3; --accent:#0E9384; --accent-strong:#0B7A6E;
+    --accent-soft:#E1F3F0; --code-bg:#0C1512; --code-ink:#D6E4E1; --code-teal:#4FD6C2; --code-amber:#E8C58A;
+    --warn:#9A6A12; --warn-soft:#FBF1DC;
+    --shadow:0 2px 6px rgba(20,32,31,.06), 0 24px 60px -28px rgba(20,32,31,.34);
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --ground:#0C110F; --surface:#131B19; --surface-2:#1A2422; --ink:#EAF0EF; --muted:#9BA9A6; --faint:#6C7A77;
+    --border:#223029; --border-strong:#2E3E39; --accent:#19B9A6; --accent-strong:#4FD6C2; --accent-soft:#16302B;
+    --code-bg:#080F0D; --warn:#E8C58A; --warn-soft:#241C0C;
+    --shadow:0 2px 6px rgba(0,0,0,.4), 0 30px 70px -30px rgba(0,0,0,.75);
+  }}
+  :root[data-theme="dark"]{
+    --ground:#0C110F; --surface:#131B19; --surface-2:#1A2422; --ink:#EAF0EF; --muted:#9BA9A6; --faint:#6C7A77;
+    --border:#223029; --border-strong:#2E3E39; --accent:#19B9A6; --accent-strong:#4FD6C2; --accent-soft:#16302B;
+    --code-bg:#080F0D; --warn:#E8C58A; --warn-soft:#241C0C;
+    --shadow:0 2px 6px rgba(0,0,0,.4), 0 30px 70px -30px rgba(0,0,0,.75);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:660px;margin:0 auto;padding-inline:24px;padding-block:40px 72px;}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-bottom:40px;}
+  .brand .wm{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:22px;letter-spacing:-.05em;color:var(--ink);}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:36px 34px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-strong);margin:0 0 12px;}
+  h1{font-family:'Sora',sans-serif;font-weight:700;font-size:30px;letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance;}
+  .lede{color:var(--muted);margin:0 0 26px;}
+  .lede b{color:var(--ink);font-weight:600;}
+  .label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:24px 0 8px;}
+  .keyrow{display:flex;gap:8px;align-items:stretch;}
+  .keybox{flex:1;min-width:0;background:var(--code-bg);color:var(--code-teal);font-family:'JetBrains Mono',monospace;font-size:15px;border-radius:10px;padding:14px 16px;overflow-x:auto;white-space:nowrap;}
+  .copy{flex:none;font-family:inherit;font-size:14px;font-weight:600;border:1px solid var(--border-strong);background:var(--surface-2);color:var(--ink);border-radius:10px;padding:0 16px;cursor:pointer;}
+  .copy:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-strong);}
+  .copy.done{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .warn{display:flex;gap:10px;align-items:flex-start;background:var(--warn-soft);border:1px solid color-mix(in srgb,var(--warn) 40%,transparent);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:13.5px;color:var(--ink);}
+  .warn svg{flex:none;color:var(--warn);margin-top:2px;}
+  pre{margin:12px 0 0;background:var(--code-bg);color:var(--code-ink);border-radius:12px;padding:18px;overflow-x:auto;}
+  pre,code{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7;}
+  .c-cmt{color:#6E827E;} .c-am{color:var(--code-amber);}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:15px;font-weight:600;border-radius:10px;padding:11px 18px;text-decoration:none;border:1px solid transparent;cursor:pointer;}
+  .btn--primary{background:var(--accent);color:#fff;} .btn--primary:hover{background:var(--accent-strong);}
+  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--border-strong);} .btn--ghost:hover{background:var(--surface-2);}
+  .muted-note{color:var(--faint);font-size:13.5px;margin-top:22px;}
+  .muted-note a{color:var(--accent-strong);}
+  .spin{display:inline-block;width:18px;height:18px;border:2px solid var(--border-strong);border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-3px;margin-right:8px;}
+  @keyframes sp{to{transform:rotate(360deg);}}
+  @media (prefers-reduced-motion: reduce){.spin{animation:none;}}
+  [hidden]{display:none!important;}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="mk" viewBox="0 0 96 96">
+    <circle cx="12" cy="48" r="7.5" fill="none" stroke="currentColor" stroke-width="6"/>
+    <line x1="27" y1="48" x2="33" y2="48" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="48" cy="48" r="7.5" fill="none" stroke="currentColor" stroke-width="6"/>
+    <line x1="63" y1="48" x2="67.5" y2="48" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <rect x="72" y="35" width="22" height="26" rx="8" fill="currentColor"/>
+  </symbol>
+</defs></svg>
+
+<div class="wrap">
+  <a class="brand" href="/">
+    <svg width="36" height="36" style="color:var(--accent)"><use href="#mk"/></svg>
+    <span class="wm">purlo</span>
+  </a>
+
+  <div class="card">
+    <!-- loading -->
+    <div id="loading">
+      <p class="eyebrow">Almost there</p>
+      <h1><span class="spin"></span>Setting up your account…</h1>
+      <p class="lede">Confirming your subscription and issuing your API key.</p>
+    </div>
+
+    <!-- success -->
+    <div id="success" hidden>
+      <p class="eyebrow">Payment confirmed</p>
+      <h1>You're in — welcome to Purlo <span id="tier"></span>.</h1>
+      <p class="lede">Your account <b id="email"></b> is active. Here's your API key:</p>
+
+      <p class="label">Your API key</p>
+      <div class="keyrow">
+        <div class="keybox" id="key">purlo_…</div>
+        <button class="copy" id="copy" type="button">Copy</button>
+      </div>
+      <div class="warn">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+        <span>This key is shown <b>once</b>. Store it somewhere safe (a secret manager or your <code>.env</code>) — you can't retrieve it again, only mint a new one.</span>
+      </div>
+
+      <p class="label">Make your first call</p>
+<pre><code><span class="c-cmt"># resize to 800px, convert to WebP, strip EXIF/GPS</span>
+curl -X POST https://api.purlo.dev/v1/image \
+  -H <span class="c-am" id="curlkey">"Authorization: Bearer purlo_…"</span> \
+  -F <span class="c-am">'operations={"resize":{"w":800},"format":"webp","strip":true}'</span> \
+  -F <span class="c-am">"image=@photo.jpg"</span> \
+  -o out.webp</code></pre>
+
+      <div class="actions">
+        <a class="btn btn--primary" href="https://docs.purlo.dev/quickstart">Read the quickstart</a>
+        <a class="btn btn--ghost" href="/">Back to purlo.dev</a>
+      </div>
+    </div>
+
+    <!-- error -->
+    <div id="error" hidden>
+      <p class="eyebrow">Hmm</p>
+      <h1>We couldn't load your key.</h1>
+      <p class="lede" id="errmsg">This link may have expired or already been used.</p>
+      <p class="muted-note">If you completed payment, your key was issued — email <a href="mailto:hello@purlo.dev">hello@purlo.dev</a> with your email address and we'll sort it out. You can also manage your subscription any time from the billing portal.</p>
+      <div class="actions"><a class="btn btn--ghost" href="/">Back to purlo.dev</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var API = 'https://api.purlo.dev';
+  var params = new URLSearchParams(location.search);
+  var sessionId = params.get('session_id');
+
+  function show(id){ ['loading','success','error'].forEach(function(s){ document.getElementById(s).hidden = (s !== id); }); }
+  function fail(msg){ if (msg) document.getElementById('errmsg').textContent = msg; show('error'); }
+
+  if (!sessionId) {
+    fail('This page opens automatically after checkout. It looks like it was opened directly.');
+  } else {
+    fetch(API + '/v1/billing/session/' + encodeURIComponent(sessionId) + '/key')
+      .then(function(r){ return r.json().then(function(d){ return { ok: r.ok, d: d }; }); })
+      .then(function(res){
+        if (!res.ok || !res.d.apiKey) {
+          fail((res.d.error && res.d.error.message) || null);
+          return;
+        }
+        var tier = res.d.tier ? (res.d.tier.charAt(0).toUpperCase() + res.d.tier.slice(1)) : '';
+        document.getElementById('tier').textContent = tier;
+        document.getElementById('email').textContent = res.d.email || 'your account';
+        document.getElementById('key').textContent = res.d.apiKey;
+        document.getElementById('curlkey').textContent = '"Authorization: Bearer ' + res.d.apiKey + '"';
+        show('success');
+      })
+      .catch(function(){ fail('Could not reach the server. Please refresh in a moment.'); });
+  }
+
+  document.getElementById('copy').addEventListener('click', function(){
+    var key = document.getElementById('key').textContent;
+    var btn = this;
+    navigator.clipboard.writeText(key).then(function(){
+      btn.textContent = 'Copied'; btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1800);
+    });
+  });
+</script>
+</body>
+</html>
